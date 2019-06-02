@@ -18,9 +18,18 @@ app.use((res, req, next) =>
 {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Header", "Origin, X-Requested-With, Content-Type, Accept");
+       next();
 });
 
 app.use('/api/v1/company', companies);
 app.use('/api/v1/generate_uid', generate_uid);
+
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
 
 module.exports = app;

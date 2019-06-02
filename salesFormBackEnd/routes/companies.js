@@ -3,7 +3,7 @@ var router = express.Router();
 var CompanyService = require('../service/companyService');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', async (req, res, next) => {
   
   res.json({error: "Invalid Company UID."});
 });
@@ -13,7 +13,7 @@ router.post('/', async (res, req, next) =>
   const body = req.body;
   try
 	{
-		const customer = await CustomerService.create(body);
+		const customer = await CompanyService.create(body);
 
     if(body.guid !== null)
     {
@@ -36,7 +36,7 @@ router.post('/', async (res, req, next) =>
   }
 });
 
-router.get('/:id', (res, req, next) => 
+router.get('/:id', async (res, req, next) => 
 {
   try
   {
@@ -49,7 +49,7 @@ router.get('/:id', (res, req, next) =>
   }
 });
 
-router.put('/:id', (res, req, next) => 
+router.put('/:id', async (res, req, next) => 
 {
   try
   {
@@ -62,7 +62,7 @@ router.put('/:id', (res, req, next) =>
   }
 });
 
-router.delete('/:id', (res, req, next) => 
+router.delete('/:id',  async (res, req, next) => 
 {
   try
   {
