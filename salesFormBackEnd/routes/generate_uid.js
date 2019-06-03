@@ -3,7 +3,6 @@ var uid = require('uid-safe');
 
 var router = express.Router();
 
-/* GET a guid. */
 router.get('/', function(req, res, next)
 {
 	var strUid = uid.sync(18);
