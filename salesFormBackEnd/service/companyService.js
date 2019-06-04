@@ -36,9 +36,9 @@ class CompanyService
 			    message: errors
             };
 
-        }
+        } 
 
-		let company = new CompanyModel(data.first_name, data.last_name, data.email, data.addresss, data.companyName);
+		let company = new CompanyModel(data.company_name, data.first_name, data.last_name, data.addresss, data.email);
 
 		company.uid = 'c' + count++;
 

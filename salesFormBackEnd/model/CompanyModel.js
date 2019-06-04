@@ -1,12 +1,13 @@
 class CompanyModel
 {
-    constructor(uid, companyName, firstName, lastName, address, email)
+    constructor(companyName, firstName, lastName, address, email)
     {
-        this.uid = uid;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.company_name = companyName;
+        this.first_name = firstName;
+        this.last_name = lastName;
         this.address = address;
         this.email = email;
+        this.uid = null;
     }
     
 }
