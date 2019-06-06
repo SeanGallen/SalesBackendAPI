@@ -8,19 +8,17 @@ router.get('/', async (req, res, next) => {
   res.json({error: "Invalid Company UID."});
 });
 
-router.post('/', async (res, req, next) => 
+router.post('/', async (req, res, next) => 
 {
   const body = req.body;
   try
 	{
-		const customer = await CompanyService.create(body);
-
+		const company = await CompanyService.create(body);
     if(body.guid !== null)
     {
       company.guid = body.guid;
     }
-    res.cookies('guid', company.guid, { maxAge: 900000, httpOnly: true });
-
+    res.cookie('guid', body.guid, { maxAge: 900000, httpOnly: true });
     return res.status(201).json({ company: company});
   }
   catch(err)
@@ -36,7 +34,7 @@ router.post('/', async (res, req, next) =>
   }
 });
 
-router.get('/:id', async (res, req, next) => 
+router.get('/:id', async (req, res, next) => 
 {
   try
   {
@@ -49,7 +47,7 @@ router.get('/:id', async (res, req, next) =>
   }
 });
 
-router.put('/:id', async (res, req, next) => 
+router.put('/:id', async (req, res, next) => 
 {
   try
   {
@@ -62,7 +60,7 @@ router.put('/:id', async (res, req, next) =>
   }
 });
 
-router.delete('/:id',  async (res, req, next) => 
+router.delete('/:id',  async (req, res, next) => 
 {
   try
   {

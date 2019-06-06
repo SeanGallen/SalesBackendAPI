@@ -10,19 +10,20 @@ let namePattern = /([A-Za-z\-\’])*/;
 
 const companySchemaValidator = {
     guid: {type: 'string', min: 3},
-    companyName: { type: 'string', min:1, max: 50, pattern: namePattern},
-    firstName: { type: 'string', min:1, max: 50, pattern: namePattern},
-    lastName: { type: 'string', min:1, max: 50, pattern: namePattern},
-    addresss: { type: 'string', min:1, max: 50},
-    email: { type: "email", max: 75 },
+    company_name: { type: 'string', min:1, max: 50, pattern: namePattern},
+    first_name: { type: 'string', min:1, max: 50, pattern: namePattern},
+    last_name: { type: 'string', min:1, max: 50, pattern: namePattern},
+    address: { type: 'string', min:1, max: 50},
+    //email: { type: "email", max: 75 },
 };
 
 class CompanyService
 {
     static create(data)
     {
+		
         var validResponse = companyValidator.validate(data, companySchemaValidator);
-
+		
         if(!validResponse === true)
         {
             let error = {}, item;
@@ -38,10 +39,9 @@ class CompanyService
 
         } 
 
-		let company = new CompanyModel(data.company_name, data.first_name, data.last_name, data.addresss, data.email);
-
+		let company = new CompanyModel(data.company_name, data.first_name, data.last_name, data.address);
 		company.uid = 'c' + count++;
-
+		
 		companies[company.uid] = company;
 
 		return company;
@@ -49,6 +49,7 @@ class CompanyService
 
     static retrieve(uid)
 	{
+		console.log('uid ', uid);
 		if(companies[uid] != null)
 		{
 			return companies[uid];
