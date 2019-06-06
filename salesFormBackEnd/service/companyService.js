@@ -14,7 +14,7 @@ const companySchemaValidator = {
     first_name: { type: 'string', min:1, max: 50, pattern: namePattern},
     last_name: { type: 'string', min:1, max: 50, pattern: namePattern},
     address: { type: 'string', min:1, max: 50},
-    //email: { type: "email", max: 75 },
+    email: { type: "email", max: 75 },
 };
 
 class CompanyService
@@ -23,7 +23,6 @@ class CompanyService
     {
 		
         var validResponse = companyValidator.validate(data, companySchemaValidator);
-		
         if(!validResponse === true)
         {
             let error = {}, item;
@@ -39,7 +38,7 @@ class CompanyService
 
         } 
 
-		let company = new CompanyModel(data.company_name, data.first_name, data.last_name, data.address);
+		let company = new CompanyModel(data.company_name, data.first_name, data.last_name, data.address, data.email);
 		company.uid = 'c' + count++;
 		
 		companies[company.uid] = company;
@@ -49,7 +48,6 @@ class CompanyService
 
     static retrieve(uid)
 	{
-		console.log('uid ', uid);
 		if(companies[uid] != null)
 		{
 			return companies[uid];

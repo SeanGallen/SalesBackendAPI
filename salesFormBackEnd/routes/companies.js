@@ -2,9 +2,7 @@ var express = require('express');
 var router = express.Router();
 var CompanyService = require('../service/companyService');
 
-/* GET users listing. */
 router.get('/', async (req, res, next) => {
-  
   res.json({error: "Invalid Company UID."});
 });
 
@@ -25,7 +23,6 @@ router.post('/', async (req, res, next) =>
   {
     if(err.name === "ValidationError")
     {
-     
       return res.status(400).json({ error: err.message });
 		}
 
