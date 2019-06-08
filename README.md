@@ -6,6 +6,6 @@ Need to Add:
 - [X] Hook up Front End properly 
 - [X] Clean up and Add features back in.
 - [ ] Add database
-- [ ] Add Tests
+- [X] Add Tests
 - [ ] Add login
 - [ ] Maybe add admin and Authorization
