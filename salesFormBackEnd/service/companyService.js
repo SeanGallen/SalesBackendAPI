@@ -62,7 +62,7 @@ class CompanyService
 	{
 		if(companies[uid] != null)
 		{
-			const company = companiess[uid];
+			const company = companies[uid];
 			
 			Object.assign(company, data);
 		}
