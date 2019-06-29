@@ -6,7 +6,7 @@ var fakeRecords = [
 
 let searchUser = {
   findByUserId : function(id, cb){
-    process.nextTrick(function() {
+    process.nextTick(() => {
         var index = id -1;
         if(fakeRecords[index])
         {
@@ -20,7 +20,7 @@ let searchUser = {
   },
 
  finByUser : function(user, cb){
-    process.nextTrick(
+    process.nextTick(
         () => {
             var found = fakeRecords.find( record => record.username = user );
             if(found)
